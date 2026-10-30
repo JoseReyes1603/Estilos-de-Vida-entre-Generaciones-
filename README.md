@@ -32,9 +32,9 @@ La forma en que una familia se alimenta, se viste, se transporta o maneja su bas
 
 
 
-## 💻 Código
+## 💻 Codigo
 
-📄 Archivo principal: [`index.html`](index.html)
+📄 Archivo principal: [index.html](Codigo/index.html)
 
 
 ## 🖼️ Imágenes
