@@ -1,1 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estilos de vida entre generaciones</title>
+<style>
+  :root {
+    --verde-oscuro: #1f4d2b;
+    --verde: #2e7d32;
+    --verde-claro: #a5d6a7;
+    --hoja: #e8f5e9;
+    --tierra: #8d6e63;
+    --arena: #faf7f0;
+    --texto: #1b2a1e;
+    --error: #c62828;
+    --error-fondo: #fdecea;
+    --sombra: 0 4px 14px rgba(31, 77, 43, 0.12);
+  }
 
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+    background: linear-gradient(180deg, var(--hoja) 0%, var(--arena) 60%);
+    color: var(--texto);
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+
+  header {
+    background: linear-gradient(135deg, var(--verde-oscuro), var(--verde));
+    color: #fff;
+    padding: 2.5rem 1rem 2rem;
+    text-align: center;
+    box-shadow: var(--sombra);
+  }
+
+  header h1 {
+    margin: 0 0 0.6rem;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+  }
+
+  header p {
+    margin: 0 auto;
+    max-width: 720px;
+    font-size: 1.05rem;
+    opacity: 0.95;
+  }
+
+  main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 3rem;
+  }
+
+  .columnas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .seccion {
+    background: #fff;
+    border-radius: 14px;
+    border-top: 6px solid var(--verde);
+    box-shadow: var(--sombra);
+    padding: 1.25rem;
+  }
+
+  .seccion:nth-child(2) { border-top-color: var(--tierra); }
+  .seccion:nth-child(3) { border-top-color: #43a047; }
+
+  .seccion h2 {
+    margin: 0 0 1rem;
+    color: var(--verde-oscuro);
+    font-size: 1.4rem;
+  }
+
+  .campo { margin-bottom: 1rem; }
+
+  label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.93rem;
+    margin-bottom: 0.35rem;
+  }
+
+  input[type="number"], textarea {
+    width: 100%;
+    font: inherit;
+    font-size: 0.95rem;
+    padding: 0.6rem 0.7rem;
+    border: 1.5px solid var(--verde-claro);
+    border-radius: 8px;
+    background: #fcfffc;
+    color: var(--texto);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  input[type="number"] { max-width: 140px; }
+
+  textarea { min-height: 80px; resize: vertical; }
+
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--verde);
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
+  }
+
+  .vacio {
+    border-color: var(--error) !important;
+    background: var(--error-fondo) !important;
+  }
+
+  .acciones {
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  #btnComparar {
+    background: var(--verde);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 0.9rem 2.2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: var(--sombra);
+    transition: background 0.2s, transform 0.1s;
+  }
+
+  #btnComparar:hover:not(:disabled) { background: var(--verde-oscuro); }
+  #btnComparar:active:not(:disabled) { transform: scale(0.98); }
+  #btnComparar:disabled { background: #9e9e9e; cursor: not-allowed; }
+
+  #aviso {
+    margin: 1rem auto 0;
+    max-width: 720px;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    font-weight: 600;
+    display: none;
+  }
+
+  #aviso.error { display: block; background: var(--error-fondo); color: var(--error); border: 1px solid var(--error); }
+  #aviso.cargando { display: block; background: var(--hoja); color: var(--verde-oscuro); border: 1px solid var(--verde-claro); }
+
+  #resultado {
+    display: none;
+    margin: 1.5rem auto 0;
+    max-width: 900px;
+    background: #fff;
+    border-left: 6px solid var(--verde);
+    border-radius: 12px;
+    box-shadow: var(--sombra);
+    padding: 1.25rem 1.5rem;
+    white-space: pre-line;
+    text-align: left;
+  }
+
+  #resultado h3 { margin: 0 0 0.6rem; color: var(--verde-oscuro); white-space: normal; }
+
+  footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.85rem;
+    color: var(--tierra);
+  }
+
+  @media (max-width: 900px) {
+    .columnas { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🌱 Estilos de vida entre generaciones</h1>
+  <p>Se entrevistó a tres generaciones —un abuelo o abuela, un padre o madre y un amigo o amiga— sobre sus hábitos de consumo para comparar cómo han cambiado con el tiempo y qué impacto tienen en el ambiente.</p>
+</header>
+
+<main>
+  <form id="formulario" novalidate>
+    <div class="columnas" id="columnas"></div>
+
+    <div class="acciones">
+      <button type="submit" id="btnComparar">Comparar respuestas</button>
+      <div id="aviso" role="status" aria-live="polite"></div>
+      <div id="resultado"></div>
+    </div>
+  </form>
+</main>
+
+<footer>Desarrollo Sustentable · Comparativa de hábitos de consumo</footer>
+
+<script>
+  // 👉 Pega aquí la URL de tu webhook de Make (entre las comillas):
+  const WEBHOOK_URL = "https://hook.us2.make.com/4d88kcc4gq8f1k9w7rtgungxytgsvs9u";
+
+  const PREGUNTAS = [
+    "¿Cómo se conseguía la comida en casa: mercado, tienda, súper o cultivo propio?",
+    "¿Qué se hacía con la ropa o los zapatos viejos o rotos?",
+    "¿Qué aparatos electrónicos tenías y cada cuánto los cambiabas?",
+    "¿Cómo te transportabas a la escuela o al trabajo?",
+    "¿Qué se hacía con la basura? ¿Se separaba o se reutilizaba algo?",
+    "¿Usabas bolsas, botellas o envases desechables?",
+    "¿Cómo se usaba y se cuidaba el agua en casa?",
+    "¿Qué consideras necesario para vivir bien?"
+  ];
+
+  const PERSONAS = [
+    { id: "abuelo", titulo: "Abuelo/a", icono: "👵" },
+    { id: "padre",  titulo: "Padre/Madre", icono: "👨‍👩‍👧" },
+    { id: "amigo",  titulo: "Amigo/a", icono: "🧑‍🤝‍🧑" }
+  ];
+
+  const MSJ_CARGANDO = "Analizando respuestas, esto puede tardar unos segundos...";
+  const MSJ_ERROR = "No se pudo obtener el análisis, intenta de nuevo.";
+  const MSJ_FALTAN = "Faltan campos por llenar. Completa todos los campos marcados en rojo antes de comparar.";
+
+  const contenedor = document.getElementById("columnas");
+  const formulario = document.getElementById("formulario");
+  const boton = document.getElementById("btnComparar");
+  const aviso = document.getElementById("aviso");
+  const resultado = document.getElementById("resultado");
+
+  // Construir las tres secciones
+  PERSONAS.forEach(function (p) {
+    const seccion = document.createElement("section");
+    seccion.className = "seccion";
+
+    let html = '<h2>' + p.icono + ' ' + p.titulo + '</h2>';
+    html += '<div class="campo">'
+         +  '<label for="' + p.id + '-edad">Edad</label>'
+         +  '<input type="number" id="' + p.id + '-edad" min="1" max="120" inputmode="numeric">'
+         +  '</div>';
+
+    PREGUNTAS.forEach(function (preg, i) {
+      const idCampo = p.id + "-p" + (i + 1);
+      html += '<div class="campo">'
+           +  '<label for="' + idCampo + '">' + (i + 1) + '. ' + preg + '</label>'
+           +  '<textarea id="' + idCampo + '"></textarea>'
+           +  '</div>';
+    });
+
+    seccion.innerHTML = html;
+    contenedor.appendChild(seccion);
+  });
+
+  // Quitar la marca roja al escribir
+  contenedor.addEventListener("input", function (e) {
+    if (e.target.value.trim() !== "") e.target.classList.remove("vacio");
+  });
+
+  function mostrarAviso(texto, tipo) {
+    aviso.textContent = texto;
+    aviso.className = tipo;
+  }
+
+  function ocultarAviso() {
+    aviso.textContent = "";
+    aviso.className = "";
+  }
+
+  // Verifica que todos los campos estén llenos
+  function validar() {
+    let primeroVacio = null;
+    const campos = contenedor.querySelectorAll("input, textarea");
+    campos.forEach(function (c) {
+      const vacio = c.value.trim() === "";
+      c.classList.toggle("vacio", vacio);
+      if (vacio && !primeroVacio) primeroVacio = c;
+    });
+    if (primeroVacio) primeroVacio.focus();
+    return primeroVacio === null;
+  }
+
+  // Arma el texto de una persona con el formato pedido
+  function armarTexto(idPersona) {
+    const edad = document.getElementById(idPersona + "-edad").value.trim();
+    let texto = "Edad: " + edad;
+    PREGUNTAS.forEach(function (preg, i) {
+      const resp = document.getElementById(idPersona + "-p" + (i + 1)).value.trim();
+      texto += "\n" + (i + 1) + ". " + preg + ": " + resp;
+    });
+    return texto;
+  }
+
+  formulario.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    resultado.style.display = "none";
+    resultado.textContent = "";
+
+    if (!validar()) {
+      mostrarAviso(MSJ_FALTAN, "error");
+      return;
+    }
+
+    const datos = new URLSearchParams();
+    datos.append("abuelo", armarTexto("abuelo"));
+    datos.append("padre", armarTexto("padre"));
+    datos.append("amigo", armarTexto("amigo"));
+
+    boton.disabled = true;
+    mostrarAviso(MSJ_CARGANDO, "cargando");
+
+    try {
+      const respuesta = await fetch(WEBHOOK_URL, {
+        method: "POST",
+        body: datos
+      });
+
+      if (!respuesta.ok) throw new Error("HTTP " + respuesta.status);
+
+      const texto = await respuesta.text(); // Texto plano, no JSON
+      if (texto.trim() === "") throw new Error("Respuesta vacía");
+
+      ocultarAviso();
+      resultado.innerHTML = "";
+      const titulo = document.createElement("h3");
+      titulo.textContent = "🌍 Análisis comparativo";
+      const cuerpo = document.createElement("div");
+      cuerpo.textContent = texto;
+      resultado.appendChild(titulo);
+      resultado.appendChild(cuerpo);
+      resultado.style.display = "block";
+      resultado.scrollIntoView({ behavior: "smooth", block: "start" });
+    } catch (err) {
+      console.error(err);
+      mostrarAviso(MSJ_ERROR, "error");
+    } finally {
+      boton.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>
