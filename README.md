@@ -10,7 +10,7 @@
 | **Equipo** | Generaciones_Equipo[#] |
 | **Fecha** | [dd/mm/aaaa] |
 
-🔗 **Página publicada:** [Abrir la página en GitHub Pages](https://TU-USUARIO.github.io/Estilos-de-Vida-entre-Generaciones/)
+🔗 **Página publicada:** [Abrir la página en GitHub Pages]( https://josereyes1603.github.io/Estilos-de-Vida-entre-Generaciones-/)
 
 ---
 
