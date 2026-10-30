@@ -62,6 +62,3 @@ En el video se muestra la página, el llenado de las tres entrevistas, el escena
 
 ---
 
-## ✅ Conclusión
-
-[Escribe aquí una conclusión propia del equipo sobre lo que aprendieron al comparar las tres generaciones.]
