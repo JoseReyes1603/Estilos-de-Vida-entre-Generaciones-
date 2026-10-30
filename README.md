@@ -50,7 +50,7 @@ La forma en que una familia se alimenta, se viste, se transporta o maneja su bas
 
 ## 🎥 Video
 
-▶️ [Ver video de la práctica](PEGA_AQUI_EL_LINK_DE_YOUTUBE_O_DRIVE)
+▶️ [Ver video de la práctica](https://youtu.be/a5EKJeYMUh0)
 
 En el video se muestra la página, el llenado de las tres entrevistas, el escenario funcionando en Make y el análisis que regresa la IA.
 
