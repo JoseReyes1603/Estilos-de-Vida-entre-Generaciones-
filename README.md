@@ -39,13 +39,13 @@ La forma en que una familia se alimenta, se viste, se transporta o maneja su bas
 
 ## 🖼️ Imágenes
 
-<img width="600" height="300" alt="WhatsApp Image 2026-10-29 at 5 43 13 PM" src="https://github.com/user-attachments/assets/7a417c22-a968-481a-bf5e-9bd001e3fe84" />
+<img width="500" height="300" alt="WhatsApp Image 2026-10-29 at 5 43 13 PM" src="https://github.com/user-attachments/assets/7a417c22-a968-481a-bf5e-9bd001e3fe84" />
 
-<img width="600" height="300" alt="WhatsApp Image 2026-10-29 at 5 41 08 PM" src="https://github.com/user-attachments/assets/716bec75-5735-47d3-b0b5-09f4c552e24b" />
+<img width="500" height="300" alt="WhatsApp Image 2026-10-29 at 5 41 08 PM" src="https://github.com/user-attachments/assets/716bec75-5735-47d3-b0b5-09f4c552e24b" />
 
 <img width="300" height="200" alt="Captura de pantalla 2026-10-29 175911" src="https://github.com/user-attachments/assets/d0c3a23b-53e2-4f60-8493-9ca1e9748583" />
 
-<img width="600" height="300" alt="WhatsApp Image 2026-10-29 at 5 41 56 PM" src="https://github.com/user-attachments/assets/ee2e25f4-ff38-4e4d-bc43-8d69d29daff1" />
+<img width="500" height="300" alt="WhatsApp Image 2026-10-29 at 5 41 56 PM" src="https://github.com/user-attachments/assets/ee2e25f4-ff38-4e4d-bc43-8d69d29daff1" />
 
 
 ## 🎥 Video
