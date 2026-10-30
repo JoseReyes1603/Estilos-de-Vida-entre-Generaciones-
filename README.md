@@ -57,7 +57,7 @@ En el video se muestra la página, el llenado de las tres entrevistas, el escena
 ---
 
 ## 📊 Resultados
-
+[Ver los Resultados](https://github.com/JoseReyes1603/Estilos-de-Vida-entre-Generaciones-/blob/main/Resultados/Resultados_Practica_3.4_Estilos_de_vida.pdf)
 
 
 ---
